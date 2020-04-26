@@ -55,20 +55,49 @@ const questions = [{
 function init() {
     return inquirer.prompt(questions)
 }
-
-function generateMarkdown(questions) {
+// Function to generate a title, if left blank nothing appears
+function generateMarkdownTitle(questions) {
     return `
-  # PROJECT TITLE: ${questions.title}
-  ${questions.description}
+# PROJECT TITLE: ${questions.title}
+${questions.description}
+
+# TABLE OF CONTENTS
+1. [INSTALLATION](#install)
+2. [USAGE](#usage)
+3. [CONTRIBUTIONS](#contributions)
+4. [CONTACT](#contact)
   
-  `;
-}
+<a name="install"></a>
+# INSTALATION: 
+${questions.installation}
+  
+<a name="usage"></a>
+# USAGE:
+${questions.usage}
+
+![Screenshot of application](screeny.png)
+
+<a name="contributions"></a>
+# CONTRIBUTIONS:
+${questions.contributions}
+
+<a name="contact"></a>
+# CONTACT
+If you have any feedback or bugs to report please contact me via email at ${questions.email}.
+  
+[Find me on linkedIn!](${questions.linkedin}) 
+  
+[![Follow me on GitHub!](https://img.shields.io/github/followers/${questions.github}?label=Follow%20me%20on%20GitHub%21&style=social)](github.com/${questions.github})
+  `
+};
+
+
 
 // The workings to add data into a readme template and apply the template to the users README.md file
 init()
     .then(function (questions) {
-        const readMe = generateMarkdown(questions);
-        return writeFileAsync("README.md", readMe);
+        const titlePart = generateMarkdownTitle(questions);
+        return writeFileAsync("editing/README.md", titlePart);
     })
     .then(function () {
         console.log("Successfully wrote to README.md");
@@ -77,10 +106,6 @@ init()
         console.log(err);
     });
 
-
-
-
-
 // !!!!STUFF I HAVE COMMENTED OUT IN CODE!!! //
-
+// 
 // function writeToFile("README.md", data) {}
