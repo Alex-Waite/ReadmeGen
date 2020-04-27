@@ -22,7 +22,7 @@ const questions = [{
     {
         type: "input",
         name: "installation",
-        message: "How is this application installed? (If inapplicable leave empty)"
+        message: "How is this application installed? (If inapplicable type non applicable)"
     },
     {
         type: "input",
@@ -32,12 +32,17 @@ const questions = [{
     {
         type: "input",
         name: "contributions",
-        message: "Any notable contributions? If so who/how (If inapplicable leave empty)"
+        message: "Any notable contributions? If so who/how (If inapplicable type non applicable)"
+    },
+    {
+        type: "input",
+        name: "licence",
+        message: "What licence was used? (If inapplicable type non applicable)"
     },
     {
         type: "input",
         name: "linkedin",
-        message: "Enter your LinkedIn URL. (If inapplicable leave empty)"
+        message: "Enter the URL to your linkedin profile. (If inapplicable leave empty)"
     },
     {
         type: "input",
@@ -65,7 +70,8 @@ ${questions.description}
 1. [INSTALLATION](#install)
 2. [USAGE](#usage)
 3. [CONTRIBUTIONS](#contributions)
-4. [CONTACT](#contact)
+4. [LICENCE](#licence)
+5. [CONTACT](#contact)
   
 <a name="install"></a>
 # INSTALATION: 
@@ -81,13 +87,17 @@ ${questions.usage}
 # CONTRIBUTIONS:
 ${questions.contributions}
 
+<a name="licence"></a>
+# LICENCE: 
+Licence used: ${questions.licence}
+
 <a name="contact"></a>
-# CONTACT
+# CONTACT:
 If you have any feedback or bugs to report please contact me via email at ${questions.email}.
   
 [Find me on linkedIn!](${questions.linkedin}) 
   
-[![Follow me on GitHub!](https://img.shields.io/github/followers/${questions.github}?label=Follow%20me%20on%20GitHub%21&style=social)](github.com/${questions.github})
+[![Follow me on GitHub!](https://img.shields.io/github/followers/${questions.github}?label=Follow%20me%20on%20GitHub%21&style=social)](https://github.com/${questions.github})
   `
 };
 
